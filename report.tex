@@ -16,6 +16,8 @@
     }
     
 \usepackage{listings}
+\usepackage{minted}
+\usepackage{graphicx}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -103,6 +105,141 @@ As you can see above, the basis of the function is to iteratively decrement a an
 decrement them by the definition given. 
 
 \subsection{Week 2}
+For this week's homework we wil take a look and practice based on our discussion of the Towers of Hanoi problem. To solve the Towers of Hanoi one must move all the rings
+from the left-most tower to the right-most tower. However, discs can only be placed on other discs larger than themselves. Therefore, we have to logically think about the 
+order in which we move them as well as how we can most efficiently do so (the least amount of moves). I have included a visual representation of what this problem looks like: 
+\begin{center}
+  \includegraphics[scale=0.2]{towersOfHanoi_visual.png}
+\end{center}
+
+In our class discussion, we established a set of rules in order to then discuss how to represent our functions in code. Below I include both rules as well as repeat some notes on notation 
+in order to allow for some context on the second half of this assignment.
+\begin{minted}{haskell}
+  hanoi 1 x y = move x y 
+
+  hanoi (n+1) x y = 
+    hanoi n x (other x y)
+    move x y 
+    hanoi n (other x y) y
+\end{minted}
+\begin{itemize}
+  \item read \mintinline{haskell}{hanoi n x y} as "move tower of n disks from x to y"
+  \item think about how to move a tower of n+1 disks assuming we already know how to move a tower of n disks 
+  \item \mintinline{haskell}{hanoi n x y} is a function that takes three arguments: a number n (the number of disks), a number x (encoding the place where the tower is, a number y (encoding the place
+  where the tower should go))
+  \item \mintinline{haskell}{move x y} is afunction that moves one disk (the topmost disk) from x to y 
+  \item \mintinline{haskell}{other x y} denotes the third place which is neither x nor y 
+\end{itemize}
+
+Now having laid down some rules for our discussion, we observed that the nature of the Towers of Hanoi problem is recursive given that in order to solve a tower of 4 disks we must first solve 
+it with 3 disks and then that requires we solve it for 2 disks and so on. In class we observed the 5 disk tower solution of \mintinline{haskell}{hanoi 5 0 2}. For this assignment, I will write out the 
+implementation of this function to cement what we learned about its recursion and logic. 
+\begin{minted}{haskell}
+  hanoi 5 0 2
+    hanoi 4 0 1
+      hanoi 3 0 2
+        hanoi 2 0 1
+          hanoi 1 0 2 = move 0 2
+          move 0 1
+          hanoi 1 2 1 = move 2 1
+        move 0 2
+        hanoi 2 1 2 
+          hanoi 1 1 0 = move 1 0 
+          move 1 2
+          hanoi 1 0 2 = move 0 2
+      move 0 1
+      hanoi 3 2 1 
+        hanoi 2 2 0
+          hanoi 1 2 1 = move 2 1 
+          move 2 0
+          hanoi 1 1 0 = move 1 0
+        move 2 1
+        hanoi 2 0 1
+          hanoi 1 0 2 = move 0 2
+          move 0 1
+          hanoi 1 2 1 = move 2 1
+    move 0 2
+    hanoi 4 1 2
+      hanoi 3 1 0
+        hanoi 2 1 2
+          hanoi 1 1 0 = move 1 0
+          move 1 2
+          hanoi 1 0 2 = move 0 2
+        move 1 0
+        hanoi 2 2 0
+          hanoi 1 2 1 = move 2 1
+          move 2 0
+          hanoi 1 1 0 = move 1 0
+      move 1 2
+      hanoi 3 0 2
+        hanoi 2 0 1
+          hanoi 1 0 2 = move 0 2
+          move 0 1
+          hanoi 1 2 1 = move 2 1
+        move 0 2
+        hanoi 2 1 2
+          hanoi 1 1 0 = move 1 0 
+          move 1 2
+          hanoi 1 0 2 = move 0 2
+\end{minted}
+
+As we can see this is a very lengthy program that relies on its recursive nature to solve the hanoi problem. Now, if we extract from this execution the moves that solve the puzzle (in their right order), we will see that there are 31 moves for the 5-disk tower 
+that will solve the problem most efficiently. I say that these are the steps that actually solve the problem since they are the ones that will prompt moving a disk from one tower to another. I will rewrite the steps again below: 
+\begin{minted}{haskell}
+  move 0 2
+  move 0 1
+  move 2 1
+  move 0 2
+  move 1 0
+  move 1 2
+  move 0 2
+  move 0 1 
+  move 2 1
+  move 2 0
+  move 1 0
+  move 2 1
+  move 0 2
+  move 0 1
+  move 2 1
+  move 0 2
+  move 1 0
+  move 1 2
+  move 0 2
+  move 1 0
+  move 2 1
+  move 2 0
+  move 1 0
+  move 1 2
+  move 0 2
+  move 0 1
+  move 2 1
+  move 0 2
+  move 1 0
+  move 1 2
+  move 0 2
+\end{minted}
+
+Now that we have written out the exection, we can also see that the word \mintinline{haskell}{hanoi} appear many times in the computation. I observed the number of occurrences and recorded them in the below table. By looking at the table, we can notice that the
+number of occurrences can actually be represented as a formula, for they increase in the same intervals exponentially. Therefore, we can say that with n disks, the number of times the word \mintinline{haskell}{hanoi} appears in the computation is \(2^n - 1\). 
+\begin{center}
+  \begin{tabular}{|c c|}
+    \hline
+    n disks & num of hanoi \\
+    \hline 
+    1 & 1 \\
+    \hline 
+    2 & 3 \\
+    \hline 
+    3 & 7 \\
+    \hline 
+    4 & 15 \\
+    \hline 
+    5 & 31 \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\subsection{Week 3}
 
 \ldots
 
