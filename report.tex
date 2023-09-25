@@ -1,6 +1,9 @@
 \documentclass{article}
 
 \usepackage{amsthm}
+
+% !TeX TXS-program:compile = txs:///pdflatex/[--shell-escape]
+
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -41,13 +44,13 @@
 }
 
 \theoremstyle{theorem} 
-   \newtheorem{theorem}{Theorem}[section]
-   \newtheorem{corollary}[theorem]{Corollary}
-   \newtheorem{lemma}[theorem]{Lemma}
-   \newtheorem{proposition}[theorem]{Proposition}
+  \newtheorem{theorem}{Theorem}[section]
+  \newtheorem{corollary}[theorem]{Corollary}
+  \newtheorem{lemma}[theorem]{Lemma}
+  \newtheorem{proposition}[theorem]{Proposition}
 \theoremstyle{definition}
-   \newtheorem{definition}[theorem]{Definition}
-   \newtheorem{example}[theorem]{Example}
+  \newtheorem{definition}[theorem]{Definition}
+  \newtheorem{example}[theorem]{Example}
 \theoremstyle{remark}    
   \newtheorem{remark}[theorem]{Remark}
 
@@ -109,7 +112,7 @@ For this week's homework we wil take a look and practice based on our discussion
 from the left-most tower to the right-most tower. However, discs can only be placed on other discs larger than themselves. Therefore, we have to logically think about the 
 order in which we move them as well as how we can most efficiently do so (the least amount of moves). I have included a visual representation of what this problem looks like: 
 \begin{center}
-  \includegraphics[scale=0.2]{towersOfHanoi_visual.png}
+  \includegraphics[scale=0.7]{towersOfHanoi_visual.png}
 \end{center}
 
 In our class discussion, we established a set of rules in order to then discuss how to represent our functions in code. Below I include both rules as well as repeat some notes on notation 
@@ -240,6 +243,81 @@ number of occurrences can actually be represented as a formula, for they increas
 \end{center}
 
 \subsection{Week 3}
+In this week's homework, we are reviewing parsing and context-free grammars. The idea of parsing is immportant to understand as we need it to translate concrete syntax (what we see as more human-readable) into abstract syntax (what a computer will see as more readble). 
+In class, we focused on processing abstract syntax in a 2-dimensional view, or what resembles a tree. A context-free grammar is a set of rules that defines a language. One of the examples we used, and the one we will use for the following problems, is a context-free grammar that 
+defines arithmetic expressions. In other words, a string is considered to be part of the language defined if it can be dervied from the rules below.
+\begin{minted}{haskell}
+  Exp -> Exp '+' Exp1
+  Exp1 -> Exp1 '*' Exp2
+  Exp2 -> Integer 
+  Exp2 -> '(' Exp ')'
+  Exp -> Exp1
+  Exp1 -> Exp2
+\end{minted}
+Now that we have the rules above, I will write out the derivation trees (aka parse trees or conccrete syntax trees) for the following strings. Note that I numbered the rules above and wrote, in blue, the number of the rule used in each step. The integer definition is implied here so there is no 
+number next to those translations. 
+\begin{itemize}
+  \item 2+1
+  \item 1+2*3
+  \item 1+(2*3)
+  \item (1+2)*3
+  \item 1+2*3+4*5+6
+\end{itemize}
+
+\begin{center}
+  \includegraphics[scale=0.3]{parsing_arithmetic.jpg}
+\end{center}
+
+
+Now that we have covered what the parsing process looks like, we can think bigger. In other words, we can think of a parser that will automatically translate concrete syntax into abstract syntax. Looking at out lesson, we do not attempt to create this type of parser ourselves, but rather 
+used a parser generator. In this case, we will input a context-free grammer (like the one above) and the generator will output a parser.
+
+First, I installed the parser generator BNFC, which proved to be a feat of its own. After multiple error messages and researching quests, I was able to successfully download the generator as well as the necessary libraries (alex, happy, etc.). The first commands I used are those described in the 
+lecture: 
+\begin{minted}{haskell}
+  bnfc -m -haskell numbers.cf
+  make
+  echo "1+2*3" | ./TestNumbers
+\end{minted}
+This generated some files and then gave me the following output: 
+\begin{center}
+  \includegraphics[width=15cm]{bnfc_intro_example.png}
+\end{center}
+
+Having run the example successfully, I will now show the outputs for the following given strings: **You will note that these are the same exercises I translated by hand above**
+\begin{center}
+  2 + 1 \\
+  \includegraphics[width=15cm]{bnfc_exercise1a.png}
+
+  1 + 2 * 3\\
+  \includegraphics[width=15cm]{bnfc_exercise1b.png}
+
+  1 + ( 2 * 3 )\\
+  \includegraphics[width=15cm]{bnfc_exercise1c.png}
+
+  ( 1 + 2 ) * 3\\
+  \includegraphics[width=15cm]{bnfc_exercise1d.png}
+
+  1 + 2 * 3 + 4 * 5 + 6\\
+  \includegraphics[width=15cm]{bnfc_exercise1e.png}
+\end{center}
+
+
+We can also look at the how the use of paranthesis affects the output. Here we will compare the output between 
+\begin{itemize}
+  \item 1+2+3
+  \item (1+2)+3
+  \item 1+(2+3)
+\end{itemize}
+\begin{center}
+  \includegraphics[width=15cm]{bnfc_exercise1f.png}
+\end{center}
+As you can see, the abstract syntax outputted differs depending on where or if the paranthesis are placed in the expression. The first and last output do yield the same result, implying 
+that if the parser is not given any paranthesis, it will prioritize executing from left to right. In this case, the 1 and the 2 are added together first. Therefore, when the 2 and the 3 are 
+placed in paranthesis, the abstract syntax changes as the order in which the addition functions are executed also changes. Overall, this homework focused on practicing with and establishing the BNFC 
+environment as well as understanding how to convert concrete syntax into abstract syntax. \\
+
+\subsection{Week 4}
 
 \ldots
 
