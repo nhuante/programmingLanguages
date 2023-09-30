@@ -318,6 +318,41 @@ placed in paranthesis, the abstract syntax changes as the order in which the add
 environment as well as understanding how to convert concrete syntax into abstract syntax. \\
 
 \subsection{Week 4}
+This week's homework builds upon the last assignment and focuses on understanding lambda calculus. Using the layout of the previous interpreter for addition and multiplication, I first had to 
+modify the definitions and interpreter to read lambda calculus. The first step of the homework was to "use bnfc and the grammar of lambda-calculus [given] to create a parser for lambda-calculus expressions." 
+I include the definition provided below: 
+\begin{minted}{haskell}
+  Abs.   Exp ::= "\\" Ident "." Exp ;  
+  App.   Exp ::= Exp Exp1 ; 
+  Var.   Exp1 ::= Ident ;
+
+  coercions Exp 1 ;
+\end{minted}
+
+
+Having generating a parser succesfully, I will now move on to the next section. Here, we will use the bnfc parser to write out the abstract syntax trees (in 2-dimensional notation) for 8 expressions. The first photo 
+shows the 2-dimensional trees and the second code section shows the generated linearized abstract syntax tree I got from the bnfc-generated parser: 
+\begin{center}
+  \includegraphics[width=15cm]{Week4hw_Trees.jpg}
+  \begin{minted}{haskell}
+    x linearized: x
+    x x linearized: x x
+    x y linearized: x y
+    x y z linearized: x y z
+    \ x.x linearized: \ x . x
+    \ x.x x linearized: \ x . x x
+    (\ x . (\ y . x y)) (\ x.x) z linearized: \ x . \ y . x y (\ x . x) z
+    (\ x . \ y . x y z) a b c linearized: \ x . \ y . x y z a b c
+  \end{minted}
+\end{center}
+
+As the final part of the homework, I finish the workout we began in class. This workout is a pen and paper computation based on the same definitions we described above. 
+\begin{center}
+  \includegraphics[width=15cm]{Week4hw_InClassProblem.jpg}
+\end{center}
+
+\subsection{Week 5}
+
 
 \ldots
 
