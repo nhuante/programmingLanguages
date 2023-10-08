@@ -352,13 +352,98 @@ As the final part of the homework, I finish the workout we began in class. This 
 \end{center}
 
 \subsection{Week 5}
+For this week's homework we will review two main topics. The first is our discussion of variables, bindings, scope, and substition and the second is our practice of understanding the interpretation of lambda calculus. 
+Before I include the excercises for the section, I will include a review of the terminology and concepts we discussed. To start, there are three types of variables we introduced; they are as follows:
+\begin{itemize}
+  \item fresh variable - a variables that has not been used before 
+  \item bound variable - a variables that can be renamed by a fresh variable without changing the meaning
+  \item free variable - a variable that is not bound and receives its meaning from the context in which it appears 
+\end{itemize}
+For example, in the expression \mintinline{haskell}{\x.x+y} the x is a bound variable and the y is a free variable. When we look at the scope of a variable, this simply means we have to take account the binding and paranthesis 
+that apply to said variable. It's placement in the expression will affect the 
+scope of the variable and therefore the meaning of it. This is a common topic in programming, especially as we turn to look at functions, classes, and their
+respective variables. As a simple example, take the following function. 
+\begin{center} 
+  \begin{minted}{javascript}
+      var f = function(a) {
+        return a+3;     
+    }
+  \end{minted}
+\end{center}
+In the function defined above, the variable a only exists within the brackets of the function. Therefore, that is the scope of a. If a is referenced outside of its scope, an error will occur. Similarly, we can look at lambda calculus variables 
+in the same way. The last term I will review is substitution. Substition is a common practice in mathematics, but it is important in lambda calculus as we begin to introduce the topic of capture avoiding substition. The reason we use CAS is to
+prevent combining variables that may appear to be the same, but are not necessary equal. Therefore, the substition we will perform will avoid the ``capture" of these variables. Essentially, the idea is to look at the scope of the variables in the 
+current expression and assess whether it is necessary to replace some of them with a fresh variable in order to dsitinguish the difference between itself and other variables in the following calculations. To see this in practice, I include the 
+exercise provided for the homework below. \\
 
 
+\textbf{Definition: } The function 
+\begin{center}
+  $f \circ g$
+\end{center}
+(pronounced "f after g") is the function obtained from taking the output of $g$ as the input of $f$. In the example, we want to replace the $x$ in $f(x) = x + y$ by 
+$g(y) = y * 2$. It is tempting to write
+\begin{center}
+  $f \circ g(y) = f(g(y)) = 2 * y + y = 3y$
+\end{center}
+but this gives the \textbf{wrong} forumlformula for $f \circ g$. Such mistakes arise from not taking proper care of the distinction of free and bound variables. 
+\begin{enumerate}
+  \item What is the correct formula for the function $f \circ g$ in the example above?
+  \item Use the notions of free and bound variables and score to explain your answer.
+  \item Using lambda calculus write down a general formula for $f \circ g$ that works for abritrary f and g.
+\end {enumerate}
+
+Given the topic I have reviewed above, we can identify there is an issue in the above calculation regarding the variable $y$ and its scope. Although the $y$ variable in the functions $f$ and $g$ would be acceptable in many mathematical scenarios, this is 
+not necessarily the case for us. Given that $y$ is a free variable in the function $f$ and a bound variable in the function $g$, we do not have enough information to ensure that they refer to the same value. It is possible that each $y$ is referring to 
+a unique value. In other words, the binding to $y$ is not in the scope of the instance $y$ in the function $f$. Therefore, we cannot assume that it is bound to the same value. So, it is incorrect to simplify the expresion to $3y$. In order to correct this formula, 
+we must use capture avoiding substitution. We can assign the $y$ in $f(x)$ a fresh variable to distinguish it from any other instances of $y$. The correct formula would therefore be: \\
+\begin{center}
+  $f(x) = x + Y$\\
+  $g(y) = y * 2$
+
+  \begin{align*}
+    f \circ g(y) & = f(g(y)) \\
+                & = 2 * y + Y \\
+                & = 2y + Y
+  \end{align*}
+\end{center}
+Since the $Y$ is a free variable it will remain in the solution as a variable. Meanwhile the bound $y$ will be substituted with a value if one is provided. As a general formula for $f \circ g$, we can represent it as: 
+\begin{center}
+  $f \circ g(y) = $ \mintinline{haskell}{\y.f(g(y))}
+\end{center} 
+As you can see, we do not include the $x$ variable in this formula because it is being replaced by the output of $g(y)$. If we assign a value to $f \circ g$ we will only have to pass in one value, that of $y$, so we do not need it in the formula. \\
+
+
+
+Now, for the second half of this homework, we will switch into the discussion of the lambda calculator interpreter we have been using and gaining a deeper understanding into how and when the rules apply. This will also give us a better understanding of the topics we already 
+mentioned such as variables, bindings, scope, and substitution. We were given the following task:\\
+
+To understand how the interpreter works do the following.
+\begin{itemize}
+  \item Use Interpreter.hs to evaluate in the style above (equational reasoning as in Example 1 and 2) \begin{center}\mintinline{haskell}{(\x.\y.x)y}\end{center}Follow the implementation of eval and subst line by line, but choose your own fresh names to simplify the computation.
+  \item For each variable appearing in subst say what its binder is and what the scope of the binder is.
+\end{itemize}
+Below I will include three pictures. The first is a simple screenshot of the Interpreter.hs file in order to understand what lines I am referring to in my computation. The second picture is a screenshot of the terminal output when the interpreter file is run with the input of the function above. 
+The third picture is my handwritten computation of the equation \mintinline{haskell}{(\x.\y.x)y}. 
+In my computation, the lines in grey represent my explanations or references to what is prompting the next step of computation. I also used different color parenthesis to avoid any misunderstanding of scopes of variables. Overall, the computation is quite simple. 
+We must first evaluate the expression e1, which results in a recursive evaluation of both Abs cases in the expression. Once we have evaluated this, we can go back to the original expression and replace e1 for its evaluated value. Then, we can look at the definition of 
+how to evaluation an App expression. This leads us to a substition. The reason this substitution is important is due to the fact that both $y$'s in the original expression are not necessarily equal in value. We must substitute one of them to avoid combining them. In this example, 
+we substitute the \mintinline{haskell}{\y} for a reason. If we prioritize substitution this variable, we can easily replace the instances of $y$ it is binding. In this case, there are no $y$'s to replace in the body of the \mintinline{haskell}{\y.x} expression. Therefore, our 
+result to this expression is \mintinline{haskell}{\A.y}. Since there are no $A$'s in the body of this, the expression would simply evaluate to \mintinline{haskell}{y}.
+
+\includegraphics[width=15cm]{Week5hw_Interpreter.jpg}\\
+\includegraphics[width=15cm]{Week5hw_interpreterOutput.jpg}\\
+\includegraphics[width=15cm]{Week5hw_handwrittenInterpreter.jpg}
+
+\subsection{Week 6}
+
+ 
 \ldots
 
 \section{Conclusions}\label{conclusions}
 
-(approx 400 words) A critical reflection on the content of the course. Step back from the technical details. How does the course fit into the wider world of software engineering? What did you find most interesting or useful? What improvements would you suggest?
+(approx 400 words) A critical reflection on the content of the course. Step back from the technical details. How does the course fit into the wider world of software engineering? What did you find most interesting or useful? 
+What improvements would you suggest?
 
 \begin{thebibliography}{99}
 \bibitem[ALG]{Alg} \href{https://github.com/alexhkurz/algorithm-analysis-2023}{Algorithm Analysis}, Chapman University, 2023.
