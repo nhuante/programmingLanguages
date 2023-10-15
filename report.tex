@@ -437,6 +437,104 @@ result to this expression is \mintinline{haskell}{\A.y}. Since there are no $A$'
 
 \subsection{Week 6}
 
+The aim of this week's homework is to review what we learned in class about ARSs. An ARS, or an Abstraction Reduction System, provides you with rules that will allow you to reduce any expression composed of the letters in the given alphabet. I will first include the example we 
+did in class and then include the excercises given to us as practice. 
+
+So, the in-class example is as follows. Given the rewrite rules below, answer these questions:
+\begin{center}
+  \begin{minted}{haskell}
+    aa -> a 
+    bb -> a 
+    ab -> b
+    ba -> b 
+  \end{minted}
+\end{center}
+
+\begin{itemize}
+  \item \textbf{Why does the ARS terminate?}
+    \begin{enumerate} 
+      \item[] This ARS terminates when there is only one character left in the expression because this means there are no more rules that will shorten the string. 
+      In other words, none of the given rewrite rules can be applied. Following this logic, there are three final outcomes that an expression can be simplified to. 
+      These are `a', `b', and e. (Note: e stands for epsilon, which represents the empty string). The ARS cannot apply any of these rules to a single character or no character 
+      because each rule being with a pair of letters. Each string will simplify to a single character because the rules account for every possible combiantion of a and b. 
+    \end{enumerate}
+  \item \textbf{What are the normal forms?} 
+    \begin{enumerate} 
+      \item[] The normal forms, or the strings that you cannot rewrite, are \mintinline{haskell}{a}, \mintinline{haskell}{b}, and \mintinline{haskell}{e}.
+    \end{enumerate}
+  \item \textbf{Is there a string \mintinline{haskell}{s} that reduces to both \mintinline{haskell}{a} and \mintinline{haskell}{b}?}
+    \begin{enumerate} 
+      \item[] There is not a string that reduces to both a and b. 
+    \end{enumerate}
+  \item \textbf{Show that the ARS is confluent.}
+    \begin{enumerate} 
+      \item[] An ARS is confluent if every "peak" contains a "valley". To test this, we will take the five cases of overlapping pairs, or the critical pairs, and compute whether these 
+      two expressions will converge. In the picture below you can see how I tested these cases. The reason we want these to converge is because we want to see if they will all possible 
+      routes will simplify to the same end result. So, we take each possible overlap and draw out the routes one could take to simplify it. In these cases, the left arrow points to the 
+      string that results from applying the appropriate rewrite rule to the left-most pair of letters in the original string and copying over the last letter. The right arrow points to
+      the string that reults from copying over the first letter and applying the appropriate rewrite rule to the right-most pair of letters. We can see that in every case, the different 
+      routes of computation converge to the same end string. Therefore, we can say that this ARS is confluent. \\
+      \includegraphics[width=12cm]{confluent.png}\\
+    \end{enumerate}
+  \item \textbf{Replacing \mintinline{haskell}{->} by \mintinline{haskell}{=}, which words become equal?}
+    \begin{enumerate} 
+      \item[] If we replace \mintinline{haskell}{->} by \mintinline{haskell}{=}, then all words that simply to \mintinline{haskell}{a} become equal and all words that simplify to 
+      \mintinline{haskell}{b} become equal. Logically, this makes sense because if two strings simplify to the same letter, then the rewrite rules can be used backwards to result in either 
+      string. As we discussed this question and as I tested many cases to understand the nature of the rules, we also discovered that if a string contains an odd number of \mintinline{haskell}{b}s its 
+      normal form is \mintinline{haskell}{b} and if a string contains an even number of \mintinline{haskell}{b}s then its normal form is \mintinline{haskell}{a}.
+    \end{enumerate}
+\end{itemize}
+
+
+
+Now having reviewed the in-class example, we will look at the assigned exercises. First we are prompted to draw a picture for each of the following ARSs:
+\begin{enumerate}
+  \item \mintinline{haskell}{A = {}}
+  \item \mintinline{haskell}{A = {a} , R = {}}
+  \item \mintinline{haskell}{A = {a} , R = {(a,a)}}
+  \item \mintinline{haskell}{A = {a, b, c} , R = {(a, b), (a, c)}}
+  \item \mintinline{haskell}{A = {a, b} , R = {(a, a), (a, b)}}
+  \item \mintinline{haskell}{A = {a, b, c} , R = {(a, b), (b, b), (a, c)}}
+  \item \mintinline{haskell}{A = {a, b, c} , R = {(a, b), (b, b), (a, c), (c, c)}}
+\end{enumerate}
+
+\includegraphics[width=15cm]{arsDrawn.png}
+
+Lastly, we will find an example ARS for each of the following combinations in the table. I include my solution as a screenshot from my digital handwritten notes. 
+\begin{center}
+  \begin{tabular}{||c c c ||} 
+   \hline
+   confluent & terminating & unique normal forms \\ [0.5ex] 
+   \hline\hline
+   true & true & true \\ 
+   \hline
+   true & true & false \\
+   \hline
+   true & false & true \\
+   \hline
+   true & false & false \\
+   \hline
+   false & true & true \\
+   \hline
+   false & true & false \\
+   \hline
+   false & false & true \\
+   \hline
+   false & false & false \\ [1ex] 
+   \hline
+  \end{tabular}
+\end{center}
+\includegraphics[width=15cm]{arsTable.png}
+
+EDIT: I add this note after having gone over a few of the examples above during our lecture. One of the main ideas we discussed was whether we could say that any of the three properties (that is: confluence, termination, and unique normal forms[UNF]) 
+implies the others. We were ultimately able to agree upon the idea that if an ARS is both confluent and terminating then this implies it has UNFs. The confluence gives the ARS its uniqueness given that all "peaks" have a "valley" that lead it to the same 
+end result. The termination of the ARS means it has normal forms. So, together they imply the existence of unique normal forms for the ARS. Having this new understading of the relationships of these three properties, we can look back at my notes and 
+note that some of my examples are incorrect. Specifically, the row that describes an ARS that is confluent and terminating but does not have UNFs. This is not possible since the first two imply the last property. From my understanding
+this would also mean that when either of the first two are false, the UNFs property must be false as well. I include an edited version of my notes below.
+\includegraphics[width=15cm]{arsTableEdit.png}
+
+\subsection{Week 7}
+
  
 \ldots
 
