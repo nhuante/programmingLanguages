@@ -534,8 +534,52 @@ this would also mean that when either of the first two are false, the UNFs prope
 \includegraphics[width=15cm]{arsTableEdit.png}
 
 \subsection{Week 7}
+For this week's homework we are reviewing what we learned about invariants. An invariant is a property we can identify that remains unchanged regardless of the input or the operations performed. An easy example for an invariant is to think of a mathematical 
+formula that we commonly use. The area of a rectangle or the conversion from Fahrenheit to Celsius are two examples. Regardless of the measurements given to you, the formula of an area of a rectangle will always hold true and will not change. So, this relationship
+or this formula is an invariant. Now, we can use invariants to prove or disprove scenarios. If we can prove that an invariant does not apply to a case, then that case should be false. \\
 
- 
+In class, we looked at the chessboard puzzle and used the invariant of how many white squares there were compared to black squares based on which tiles were removed. For this homework, I will look at one of the puzzles we did not discuss in class, but 
+that was included as an example of a puzzle we could discuss, the Tetris Puzzle. I include the description of the puzzle in the below image. \\
+
+\begin{center}
+  \includegraphics[width=10cm]{tetrisDesc.jpg}
+\end{center}
+
+I stared at this problem for a while, trying to figure out a way to determine if I could fill the board with some sort of formula or invariant. After multiple failed attempts, I thought it was impossible to find a configuration that would successfully cover the 
+4x5 board with the tetris tiles. The number of tiles of the five tetrinomes was equal to the number of tiles on the board, 20. However, they weren't fitting together in a way that would be acceptable. So, I looked back at our in-class example, the chessboard 
+puzzle, and decided to use a similar approach. If we color the 4x5 with alternating colors, just like a chessboard, and the 5 tetrinomes as well, we can make an interesting observation. The board results in 20 total tiles, so 10 white tiles and 10 black tiles. 
+The tetrinomes result in either 11 black tiles and 9 white tiles or 9 black tiles and 11 white tiles depending on where the alternations colors begin. In each case, the number of black and white tiles is unequal to the those on the 4x5 grid. If we look at it this way, 
+we can reason that there is not possible configuration for the tetrinomes to cover the grid completely. The invariant here would that the number of black tiles - the number of white tiles needs to equal zero. Here, this formula would equal 2 or -2, not zero. I include 
+my drawing of the tetrinomes and grid with alternating colors below. \\
+
+\begin{center}
+  \includegraphics[width=9cm]{tetrisA.png}
+\end{center}
+
+Now that we have discussed part a, part b is asking us if we can cover an 8x5 board by using each of the tetrinomes exactly twice. Let's use the same logic here. Again, the tiles and their colors remain the same and board simply expands. 
+If we are using each tetrinome exactly twice, this means we have three possible combinations of colored tiles. The only tetrinome that affects this is the T shape so lets focus on this. We can have two T's with more black tiles each, two T's with more white tiles each, or 
+two T's, one with more black tiles and the other with more white tiles. This leaves us with three possible combinations of total colored tiles. \\
+
+\begin{itemize}
+  \item 1. 22 black tiles, 18 white tiles 
+  \item 2. 18 black tiles, 22 white tiles 
+  \item 3. 20 black tiles, 20 white tiles
+\end{itemize}
+
+The first two cases, of course, indicate it is not possible to cover the 8x5 grid with those particular combinations of tiles. However, the third case does match that of the grid, so we can say that there is a configuration that will allow us to cover the 8x5 grid with that 
+combination of tiles. The two T tiles in thise scenario are opposite of one another, so their uneven number of alternating colors cancel out here. The invariant, again, here also proves this because 22-18 and 18-22 are not equal to zero but 20-20 is equal to zero. Below, I include 
+again my drawings of the tiles and the configuration I found to satisfy the puzzle using my knowledge of the invariant. \\
+
+\begin{center}
+  \includegraphics[width=9cm]{tetrisB.png}
+\end{center}
+
+By using invariants, we can go about proving or disproving questions more efficiently rather than trying to plug in values until we can find a set that is satisfactory or until we notice the pattern. It allows us to apply our mathematical foundations and definitions to other areas, 
+such as computer science. 
+
+
+\subsection{Week 8}
+
 \ldots
 
 \section{Conclusions}\label{conclusions}
