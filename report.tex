@@ -578,7 +578,23 @@ By using invariants, we can go about proving or disproving questions more effici
 such as computer science. 
 
 
-\subsection{Week 8}
+\subsection{Week 10}
+When a player clicks on the “send blocks” button, this post request is executed. I will describe step-by-step what occurs based on my understanding using the debugger for this assignment. 
+
+The server will first receive the request to execute the endpoint and receive both the player’s code and the player’s ID. It will then check if both players have submitted their code. If they have, the server will try to run the game using the runGame(playerCodes[0], playerCodes[1]) function. 
+The result of the game will then be sent to the client. If both players have not submitted their code, the server will wait for 10 seconds for the other player to respond with their code. At each second, it will check if the second player has submitted their code and the game has finished. If 
+so, the game result will be sent to the client. If in the 10 seconds, there is no detection of the second player’s response, then the server will indicate it did not receive it. 
+
+For both players to get the result of the game, both must submit their code relatively close to each other. In this case, it would need to be within 10 seconds of each other because that is how long the loop will keep checking for both responses. Otherwise, it is possible that only the second 
+player gets the result. This is possible because the first player will stop checking for the second player’s code and will therefore not get the result of the game. The second player, however, when submitting its code will prompt the runGame function and then get the result once it completes. 
+To fix this, I would consider changing the 10 second timeout on the loop checking for the second player’s code. Otherwise, this situation will continue to be possible. 
+
+Using a debugger is helpful because it allows you to step through the code and see the changes in variables and the flow of function calls line by line. I had some issues using the debugger in that it stopped working suddenly and I have not been able to find a solution yet, but I plan to keep
+ testing it and trying to fix it so I can use it for future projects and assignments. 
+
+Additionally, I did use AI for this assignment to understand the code a bit better, but all that was written above is my own work. 
+
+
 
 \ldots
 
