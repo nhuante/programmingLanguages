@@ -3,3 +3,6 @@
 ### Natalie Huante - huante@chapman.edu
 
 This report contains all of my assignments and personal reflections for the Fall 2023 Programming Languages course, taught by Professor Alexander Kurz. For all of the homework assignments, my goal was to review the concepts we learned in lecture and explain them in my own understanding as well as how they relate to the assignment. My goal was to not only include the technical answers but also explain my thinking in finding the solution. This document was developed in LateX and along with the Health Blocks project (developed as a group) make up the bulk of the coursework for the class. [You can see the repository for the project here](https://github.com/KyleWynne/Health_Blocks) Lastly, this report is not so much an accumulation of work from the semester, but rather a more polished version of what I have learned from each lecture and assignment.
+
+
+FIXME: FORMAT THIS README MORE NICELY TO REFLECT WHAT THIS REPORT IS, WHAT IS CONTAINS, WHY IT IS IMPORTANT, AND HOW IT RELATES TO OTHER THINGS (THE PROJECT, THE COURSE, MY EXPERIENCE IN OTHER COURSES, ETC.)
