@@ -176,7 +176,7 @@ in order to allow for some context on the second half of this assignment.\\
 
 Notes on notation: 
 \begin{itemize}
-  \item read \mintinline{haskell}{hanoi n x y} as "move tower of n disks from x to y"
+  \item read \mintinline{haskell}{hanoi n x y} as ``move tower of n disks from x to y"
   \item think about how to move a tower of n+1 disks assuming we already know how to move a tower of n disks 
   \item \mintinline{haskell}{hanoi n x y} is a function that takes three arguments: a number n (the number of disks), a number x (encoding the place where the tower is, a number y (encoding the place
   where the tower should go))
@@ -243,7 +243,7 @@ implementation of this function to cement what we learned about its recursion an
 
 As we can see, this is a very lengthy program that relies on its recursive nature to solve the hanoi problem. Now, if we extract from this execution the moves that solve the puzzle (in their right order), we will see that there are 31 moves for the 5-disk tower 
 that will solve the problem most efficiently. I say that these are the steps that actually solve the problem since they are the ones that will prompt moving a disk from one tower to another. The remaining steps in the above program are used to determine which disk to move 
-and from which position to which position. Anyways, I will rewrite the "solving" steps again below: \\
+and from which position to which position. Anyways, I will rewrite the ``solving" steps again below: \\
 
 \noindent
   {\color{gray} \rule{\linewidth}{0.05mm}}
@@ -355,7 +355,7 @@ lecture:
   {\color{gray} \rule{\linewidth}{0.05mm}}
 
 
-In short, the first two commands generated the parser and the third command ran the input "1+2*3 through the generated parser. 
+In short, the first two commands generated the parser and the third command ran the input ``1+2*3" through the generated parser. 
 The generation of the parser also created extra files needed and then the test input ran gave me the following output: 
 
 \begin{center}
@@ -481,7 +481,7 @@ exercise provided for the homework below. \\
 \begin{center}
   $f \circ g$
 \end{center}
-(pronounced "f after g") is the function obtained from taking the output of $g$ as the input of $f$. In the example, we want to replace the $x$ in $f(x) = x + y$ by 
+(pronounced ``f after g") is the function obtained from taking the output of $g$ as the input of $f$. In the example, we want to replace the $x$ in $f(x) = x + y$ by 
 $g(y) = y * 2$. It is tempting to write
 \begin{center}
   $f \circ g(y) = f(g(y)) = 2 * y + y = 3y$
