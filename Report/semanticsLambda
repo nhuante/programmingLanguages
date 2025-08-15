@@ -1,0 +1,21 @@
+(\f.\x.f(f(x))) (\f.\x.(f(f(f x)))) = 
+(\x.((f(f(f x)))((f(f(f x)))(x)))) = 
+(\x.((f(f(f x)))((f(f(f x)))(x)))) = 
+((f(f(f x)))((f(f(f x)))(x)))
+
+
+// why do we copy everything and not evaluate it first
+// call by name
+// other languages use call by value
+
+/* example
+(\x.x+1)(1+2)
+cbn (1+2)+1
+cbv 3+1
+*/
+(\f.\x.f(f(x))) (\f.\x.(f(f(f x)))) = 
+\x.(\f.\x.(f(f(f x))))((\f.\x.(f(f(f x))))(x)) = (alpha)
+\x.(\f.\x.(f(f(f x))))((\f.\y.(f(f(f y))))(x)) = 
+\x.(\f.\x.(f(f(f x))))(\y.(x(x(x y)))) = 
+\x.(\f.\x.(f(f(f x))))(\y.(x(x(x y)))) = 
+ 

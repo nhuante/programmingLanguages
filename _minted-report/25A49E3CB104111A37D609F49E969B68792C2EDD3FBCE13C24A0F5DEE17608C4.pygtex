@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{o}{//}\PYG{+w}{ }\PYG{k+kt}{Rules}
+\PYG{+w}{    }\PYG{n}{hanoi}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{n}{x}\PYG{+w}{ }\PYG{n}{y}\PYG{+w}{ }\PYG{o+ow}{=}\PYG{+w}{ }\PYG{n}{move}\PYG{+w}{ }\PYG{n}{x}\PYG{+w}{ }\PYG{n}{y}
+
+\PYG{+w}{    }\PYG{n}{hanoi}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{n}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{x}\PYG{+w}{ }\PYG{n}{y}\PYG{+w}{ }\PYG{o+ow}{=}
+\PYG{+w}{      }\PYG{n}{hanoi}\PYG{+w}{ }\PYG{n}{n}\PYG{+w}{ }\PYG{n}{x}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{other}\PYG{+w}{ }\PYG{n}{x}\PYG{+w}{ }\PYG{n}{y}\PYG{p}{)}
+\PYG{+w}{      }\PYG{n}{move}\PYG{+w}{ }\PYG{n}{x}\PYG{+w}{ }\PYG{n}{y}
+\PYG{+w}{      }\PYG{n}{hanoi}\PYG{+w}{ }\PYG{n}{n}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{other}\PYG{+w}{ }\PYG{n}{x}\PYG{+w}{ }\PYG{n}{y}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{y}
+\end{Verbatim}

@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{  }\PYG{k+kt}{Exp}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{k+kt}{Exp}\PYG{+w}{ }\PYG{l+s+sc}{\PYGZsq{}+\PYGZsq{}}\PYG{+w}{ }\PYG{k+kt}{Exp1}
+\PYG{+w}{  }\PYG{k+kt}{Exp1}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{k+kt}{Exp1}\PYG{+w}{ }\PYG{l+s+sc}{\PYGZsq{}*\PYGZsq{}}\PYG{+w}{ }\PYG{k+kt}{Exp2}
+\PYG{+w}{  }\PYG{k+kt}{Exp2}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{k+kt}{Integer}
+\PYG{+w}{  }\PYG{k+kt}{Exp2}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{l+s+sc}{\PYGZsq{}(\PYGZsq{}}\PYG{+w}{ }\PYG{k+kt}{Exp}\PYG{+w}{ }\PYG{l+s+sc}{\PYGZsq{})\PYGZsq{}}
+\PYG{+w}{  }\PYG{k+kt}{Exp}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{k+kt}{Exp1}
+\PYG{+w}{  }\PYG{k+kt}{Exp1}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{k+kt}{Exp2}
+\end{Verbatim}

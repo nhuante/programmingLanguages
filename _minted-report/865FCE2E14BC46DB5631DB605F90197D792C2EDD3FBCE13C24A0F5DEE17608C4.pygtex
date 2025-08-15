@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{  }\PYG{k+kt}{Abs}\PYG{o}{.}\PYG{+w}{   }\PYG{k+kt}{Exp}\PYG{+w}{ }\PYG{k+kt}{::=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}\PYGZbs{}}\PYG{l+s}{\PYGZdq{}}\PYG{+w}{ }\PYG{k+kt}{Ident}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}.\PYGZdq{}}\PYG{+w}{ }\PYG{k+kt}{Exp}\PYG{+w}{ }\PYG{p}{;}
+\PYG{+w}{  }\PYG{k+kt}{App}\PYG{o}{.}\PYG{+w}{   }\PYG{k+kt}{Exp}\PYG{+w}{ }\PYG{k+kt}{::=}\PYG{+w}{ }\PYG{k+kt}{Exp}\PYG{+w}{ }\PYG{k+kt}{Exp1}\PYG{+w}{ }\PYG{p}{;}
+\PYG{+w}{  }\PYG{k+kt}{Var}\PYG{o}{.}\PYG{+w}{   }\PYG{k+kt}{Exp1}\PYG{+w}{ }\PYG{k+kt}{::=}\PYG{+w}{ }\PYG{k+kt}{Ident}\PYG{+w}{ }\PYG{p}{;}
+
+\PYG{+w}{  }\PYG{n}{coercions}\PYG{+w}{ }\PYG{k+kt}{Exp}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{p}{;}
+\end{Verbatim}

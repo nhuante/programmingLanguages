@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{  }\PYG{n}{bnfc}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{m}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{haskell}\PYG{+w}{ }\PYG{n}{numbers}\PYG{o}{.}\PYG{n}{cf}
+\PYG{+w}{  }\PYG{n}{make}
+\PYG{+w}{  }\PYG{n}{echo}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}1+2*3\PYGZdq{}}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{o}{./}\PYG{k+kt}{TestNumbers}
+\end{Verbatim}

@@ -1,0 +1,23 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {section}{\numberline {2}Homework}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Week 1}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Week 2}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Week 3}{6}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Week 4}{10}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Week 5}{12}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Week 6}{15}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Week 7}{19}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.8}Week 10}{22}{subsection.2.8}%
+\contentsline {section}{\numberline {3}Lessons From the Project}{25}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Project Description}{25}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Development Process}{25}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Final Product}{26}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Lessons Learned From the Project}{26}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Learning How to Interact with an API}{26}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Learning JavaScript, HTML, and GitHub Pages}{27}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}Learning About Servers}{27}{subsubsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.4}A Note On Applying Technical Skills to Real World Problems}{28}{subsubsection.3.4.4}%
+\contentsline {subsection}{\numberline {3.5}Future Additions to the Project}{28}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Concluding Thoughts}{29}{subsection.3.6}%
+\contentsline {section}{\numberline {4}Opportunity for Participation Points}{29}{section.4}%
+\contentsline {section}{\numberline {5}Conclusions}{32}{section.5}%

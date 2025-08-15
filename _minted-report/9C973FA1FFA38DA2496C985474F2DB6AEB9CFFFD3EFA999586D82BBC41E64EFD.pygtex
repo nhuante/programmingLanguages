@@ -1,0 +1,43 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// Players ready, run game}
+\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{playerCodes}\PYG{p}{[}\PYG{l+m+mf}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n+nx}{playerCodes}\PYG{p}{[}\PYG{l+m+mf}{1}\PYG{p}{])}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Both players have submitted their code. Running the game...\PYGZdq{}}\PYG{p}{);}\PYG{+w}{ }\PYG{c+c1}{// Log before running the game}
+\PYG{+w}{        }\PYG{k}{try}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k+kd}{let}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n+nx}{index}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{logs}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{runGame}\PYG{p}{(}\PYG{n+nx}{playerCodes}\PYG{p}{[}\PYG{l+m+mf}{0}\PYG{p}{],}\PYG{+w}{ }\PYG{n+nx}{playerCodes}\PYG{p}{[}\PYG{l+m+mf}{1}\PYG{p}{]);}
+\PYG{+w}{            }\PYG{n+nx}{gameIndex}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{index}
+\PYG{+w}{            }\PYG{n+nx}{gameLogs}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{logs}
+\PYG{+w}{            }\PYG{n+nx}{gameDone}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kc}{true}
+
+\PYG{+w}{            }\PYG{c+c1}{// Send the result back to the client (only this client\PYGZsq{}s response)}
+\PYG{+w}{            }\PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Execution result: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n+nx}{output}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{gameIndex}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{logs}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{gameLogs}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{payoff}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{gameLogic}\PYG{p}{.}\PYG{n+nx}{env}\PYG{p}{.}\PYG{n+nx}{payoff}\PYG{+w}{ }\PYG{p}{\PYGZcb{});}
+\PYG{+w}{            }\PYG{n+nx}{res}\PYG{p}{.}\PYG{n+nx}{status}\PYG{p}{(}\PYG{l+m+mf}{200}\PYG{p}{).}\PYG{n+nx}{send}\PYG{p}{(\PYGZob{}}\PYG{+w}{ }\PYG{n+nx}{output}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{gameIndex}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{logs}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{gameLogs}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{payoff}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{gameLogic}\PYG{p}{.}\PYG{n+nx}{env}\PYG{p}{.}\PYG{n+nx}{payoff}\PYG{+w}{ }\PYG{p}{\PYGZcb{});}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k}{catch}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{error}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{error}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Error executing code: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{error}\PYG{p}{.}\PYG{n+nx}{message}\PYG{p}{);}
+\PYG{+w}{            }\PYG{n+nx}{res}\PYG{p}{.}\PYG{n+nx}{status}\PYG{p}{(}\PYG{l+m+mf}{500}\PYG{p}{).}\PYG{n+nx}{send}\PYG{p}{(\PYGZob{}}\PYG{+w}{ }\PYG{n+nx}{error}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{error}\PYG{p}{.}\PYG{n+nx}{message}\PYG{+w}{ }\PYG{p}{\PYGZcb{});}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Finished processing /execute request\PYGZdq{}}\PYG{p}{);}
+
+\PYG{+w}{        }\PYG{c+c1}{// Reset playerCodes}
+\PYG{+w}{        }\PYG{n+nx}{playerCodes}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{\PYGZob{}\PYGZcb{};}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k}{else}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Waiting for the other player to submit their code.\PYGZdq{}}\PYG{p}{);}\PYG{+w}{ }\PYG{c+c1}{// Log when waiting for the other player}
+\PYG{+w}{        }\PYG{c+c1}{// Wait 10 seconds for other player response}
+\PYG{+w}{        }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kd}{let}\PYG{+w}{ }\PYG{n+nx}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n+nx}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+m+mf}{10}\PYG{p}{;}\PYG{+w}{ }\PYG{n+nx}{i}\PYG{o}{++}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{await}\PYG{+w}{ }\PYG{o+ow}{new}\PYG{+w}{ }\PYG{n+nb}{Promise}\PYG{p}{((}\PYG{n+nx}{res}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=\PYGZgt{}}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n+nx}{setTimeout}\PYG{p}{(}\PYG{n+nx}{res}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{1000}\PYG{p}{);}\PYG{+w}{ }\PYG{p}{\PYGZcb{});}\PYG{+w}{ }\PYG{c+c1}{// Wait 1 second}
+\PYG{+w}{            }\PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{l+s+sb}{`Checking if game done (}\PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{n+nx}{i}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+sb}{)`}\PYG{p}{)}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{gameDone}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Game done! Sending game result to client\PYGZsq{}}\PYG{p}{)}
+\PYG{+w}{                }\PYG{n+nx}{res}\PYG{p}{.}\PYG{n+nx}{status}\PYG{p}{(}\PYG{l+m+mf}{200}\PYG{p}{).}\PYG{n+nx}{send}\PYG{p}{(\PYGZob{}}
+\PYG{+w}{                    }\PYG{n+nx}{message}\PYG{o}{:}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}Got other player response.\PYGZsq{}}\PYG{p}{,}
+\PYG{+w}{                    }\PYG{n+nx}{output}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{gameIndex}\PYG{p}{,}
+\PYG{+w}{                    }\PYG{n+nx}{logs}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{gameLogs}\PYG{p}{,}
+\PYG{+w}{                    }\PYG{n+nx}{payoff}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{gameLogic}\PYG{p}{.}\PYG{n+nx}{env}\PYG{p}{.}\PYG{n+nx}{payoff}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{});}
+\PYG{+w}{                }\PYG{n+nx}{gameDone}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kc}{false}
+\PYG{+w}{                }\PYG{k}{return}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Game done not detected, returning to client\PYGZsq{}}\PYG{p}{)}
+\PYG{+w}{        }\PYG{n+nx}{res}\PYG{p}{.}\PYG{n+nx}{status}\PYG{p}{(}\PYG{l+m+mf}{200}\PYG{p}{).}\PYG{n+nx}{send}\PYG{p}{(\PYGZob{}}\PYG{+w}{ }\PYG{n+nx}{message}\PYG{o}{:}\PYG{+w}{ }\PYG{l+s+sb}{`Did not receive other player code yet. Standing by`}\PYG{+w}{ }\PYG{p}{\PYGZcb{});}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

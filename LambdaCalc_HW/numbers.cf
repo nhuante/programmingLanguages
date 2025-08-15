@@ -1,0 +1,5 @@
+Abs.   Exp ::= "\\" Ident "." Exp ;  
+App.   Exp ::= Exp Exp1 ; 
+Var.   Exp1 ::= Ident ;
+
+coercions Exp 1 ;

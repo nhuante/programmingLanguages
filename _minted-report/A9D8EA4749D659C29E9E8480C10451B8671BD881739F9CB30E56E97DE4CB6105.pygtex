@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{  }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{currentPrisoner}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}P0\PYGZdq{}}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{c+c1}{// prisoner P0}
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{number\PYGZus{}of\PYGZus{}black\PYGZus{}hats\PYGZus{}ahead}\PYG{+w}{ }\PYG{o}{\PYGZpc{}}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{c+c1}{// even number of black hats in front}
+\PYG{+w}{      }\PYG{n}{Say}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Black\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{k}{else}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{      }\PYG{c+c1}{// odd number of black hats in front}
+\PYG{+w}{      }\PYG{n}{Say}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}White\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{  }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{  }\PYG{k}{else}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{c+c1}{// prisoners P1\PYGZhy{}P9}
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(((}\PYG{n}{number\PYGZus{}of\PYGZus{}black\PYGZus{}hats\PYGZus{}behind}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{number\PYGZus{}of\PYGZus{}black\PYGZus{}hats\PYGZus{}ahead}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZpc{}}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{      }\PYG{c+c1}{// even total of black hats \PYGZhy{}\PYGZgt{} it must be odd remember}
+\PYG{+w}{      }\PYG{n}{Say}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Black\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{k}{else}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{c+c1}{// odd total of black hats \PYGZhy{}\PYGZgt{} it must be odd so don\PYGZsq{}t change it}
+\PYG{+w}{      }\PYG{n}{Say}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}White\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{  }\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
